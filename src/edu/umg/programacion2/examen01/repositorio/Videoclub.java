@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import edu.umg.programacion2.examen01.excepciones.PeliculaNoDisponibleException;
 import edu.umg.programacion2.examen01.modelo.Pelicula;
 
@@ -88,9 +87,15 @@ public class Videoclub {
 	 * - Usa Map.getOrDefault(), no un HashSet auxiliar ni containsKey().
 	 * - Si el catálogo está vacío, retorna un Map vacío (no null).
 	 */
-	public Map<String, Integer> contarPeliculasPorGenero() {
-		// TODO: reemplazar esta línea por la lógica descrita arriba.
-		throw new UnsupportedOperationException("TODO: completar contarPeliculasPorGenero() en Videoclub");
+	public class ContadorPeliculas{
+	public Map<String, Integer> contarPeliculasPorGenero(List<Pelis>peliculas) {
+		Map<String, Integer> conteo = new HashMap<>();
+		for(Pelis pelis : peliculas ) {
+			String genero = pelis.getGenero();
+			conteo.put(genero, conteo.getOrDefault(genero, 0) + 1);
+		}	
+		return conteo;
+	}
 	}
 
 	/**
@@ -113,10 +118,22 @@ public class Videoclub {
 	 * - La búsqueda ignora mayúsculas/minúsculas.
 	 * - Si no hay coincidencias, retorna una lista vacía (no null).
 	 */
-	public List<Pelicula> buscarPorTituloParcial(String texto) {
-		// TODO: reemplazar esta línea por la lógica descrita arriba.
-		throw new UnsupportedOperationException("TODO: completar buscarPorTituloParcial() en Videoclub");
-	}
+	public List<Pelicula> buscarPorTituloParcial(List <Pelicula> peliculas, String texto) {
+		List<Pelicula> resultado = new ArrayList<>();
+
+	    for (Pelicula pelicula : peliculas) {
+
+	        if (pelicula.getTitulo()
+	                .toLowerCase()
+	                .contains(texto.toLowerCase())) {
+
+	            resultado.add(pelicula);
+
+	        }
+
+	    }
+
+	    return resultado;}
 
 	/**
 	 * PREGUNTA PRÁCTICA 3 (20 pts): completar peliculaMasAntiguaDeGenero().
@@ -171,4 +188,10 @@ public class Videoclub {
 		throw new UnsupportedOperationException(
 				"TODO opcional: completar alquilarPrimeraDisponibleDeGenero() en Videoclub");
 	}
+
+	public char[] contarPeliculasPorGenero() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
