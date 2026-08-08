@@ -160,8 +160,28 @@ public class Videoclub {
 	 *   excepción.
 	 */
 	public Pelicula peliculaMasAntiguaDeGenero(String genero) {
-		// TODO: reemplazar esta línea por la lógica descrita arriba.
-		throw new UnsupportedOperationException("TODO: completar peliculaMasAntiguaDeGenero() en Videoclub");
+		
+		List<Pelicula> peliculasgenero = filtrarPorpelicula(genero);
+
+	    if (peliculasgenero.isEmpty()) {
+	        return null;
+	    }
+
+	    Pelicula masViejo = peliculasgenero.get(0);
+
+	    for (Pelicula pelicula : peliculasgenero)  {
+
+	        if (pelicula.getEdad() > masViejo.getEdad()) {
+	            masViejo = pelicula;
+	        }
+
+	    }
+
+	    return masViejo;}
+
+	private List<Pelicula> filtrarPorpelicula(String genero) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/**

@@ -72,4 +72,9 @@ public class Pelicula implements Prestable {
 		String estado = disponible ? "disponible" : "alquilada";
 		return String.format("[%s] %s (%d) - %s - %s - %s", codigo, titulo, anioEstreno, director, genero, estado);
 	}
+
+	public int getEdad() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
